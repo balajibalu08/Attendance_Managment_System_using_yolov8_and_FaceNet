@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}Face Recognition Attendance System{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <h1 class="display-4">Face Recognition Attendance System</h1>
+        <p class="lead text-muted">Automated attendance management using facial recognition technology</p>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="row g-4">
+        <!-- Student Management -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-user-graduate me-2"></i>Student Management
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Manage student information and registrations</p>
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('students') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-list me-2"></i>View Students
+                        </a>
+                        <a href="{{ url_for('register_student') }}" class="btn btn-outline-success">
+                            <i class="fas fa-user-plus me-2"></i>Register New Student
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attendance Management -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-clipboard-check me-2"></i>Attendance Management
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Take and view attendance records</p>
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('take_attendance') }}" class="btn btn-outline-success">
+                            <i class="fas fa-camera me-2"></i>Take Attendance
+                        </a>
+                        <a href="{{ url_for('view_attendance') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-calendar-alt me-2"></i>View Attendance
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports & Analytics -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-chart-bar me-2"></i>Reports & Analytics
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Generate and export attendance reports</p>
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('export_attendance') }}" class="btn btn-outline-info">
+                            <i class="fas fa-file-excel me-2"></i>Export Attendance
+                        </a>
+                        <a href="{{ url_for('view_attendance') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-chart-line me-2"></i>View Analytics
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Status -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-info-circle me-2"></i>System Status
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-database fa-2x text-primary me-3"></i>
+                                <div>
+                                    <h6 class="mb-0">Database Status</h6>
+                                    <small class="text-muted">Connected and operational</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-camera fa-2x text-success me-3"></i>
+                                <div>
+                                    <h6 class="mb-0">Camera Status</h6>
+                                    <small class="text-muted">Ready for face detection</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-shield-alt fa-2x text-info me-3"></i>
+                                <div>
+                                    <h6 class="mb-0">System Security</h6>
+                                    <small class="text-muted">All systems secure</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Add hover effects for cards
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+</script>
+{% endblock %} 

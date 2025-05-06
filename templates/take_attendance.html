@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Take Attendance{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Take Attendance</h2>
+                    <div class="video-container mb-3">
+                        <img src="{{ url_for('video_feed') }}" class="img-fluid rounded" alt="Video Feed">
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('stop_camera') }}" class="btn btn-danger">
+                            <i class="fas fa-stop"></i> Stop Camera
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Instructions</h3>
+                    <div class="alert alert-info">
+                        <h5 class="alert-heading"><i class="fas fa-info-circle"></i> How to use:</h5>
+                        <ol class="mb-0">
+                            <li>Position your face in front of the camera</li>
+                            <li>Stay still for a few seconds</li>
+                            <li>Wait for the system to recognize your face</li>
+                            <li>Your attendance will be marked automatically</li>
+                        </ol>
+                    </div>
+                    <div class="alert alert-warning">
+                        <h5 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> Tips:</h5>
+                        <ul class="mb-0">
+                            <li>Ensure good lighting</li>
+                            <li>Remove face coverings</li>
+                            <li>Look directly at the camera</li>
+                            <li>Keep a neutral expression</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .video-container {
+        position: relative;
+        width: 100%;
+        background-color: #1e1e1e;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .card {
+        background-color: #1e1e1e;
+        border: 1px solid #2d2d2d;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-title {
+        color: #e0e0e0;
+    }
+
+    .alert {
+        background-color: #2d2d2d;
+        border: 1px solid #3d3d3d;
+        color: #e0e0e0;
+    }
+
+    .alert-info {
+        background-color: rgba(13, 202, 240, 0.1);
+        border-color: rgba(13, 202, 240, 0.2);
+    }
+
+    .alert-warning {
+        background-color: rgba(255, 193, 7, 0.1);
+        border-color: rgba(255, 193, 7, 0.2);
+    }
+
+    .alert-heading {
+        color: #e0e0e0;
+    }
+
+    ol, ul {
+        padding-left: 1.5rem;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn-danger:hover {
+        background-color: #bb2d3b;
+        border-color: #b02a37;
+    }
+
+    @media (max-width: 768px) {
+        .col-md-4 {
+            margin-top: 1rem;
+        }
+    }
+</style>
+{% endblock %} 
