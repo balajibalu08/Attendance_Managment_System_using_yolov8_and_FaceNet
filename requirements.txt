@@ -8,3 +8,4 @@ Pillow
 facenet-pytorch
 ultralytics
 scipy
+gunicorn
